@@ -9,6 +9,20 @@ tables_dir <- file.path("outputs", "tables")
 dir.create(figures_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(tables_dir, recursive = TRUE, showWarnings = FALSE)
 
+plot_theme <- theme_minimal(base_size = 11) +
+  theme(
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA),
+    panel.grid.major = element_line(color = "#D9E2EC", linewidth = 0.35),
+    panel.grid.minor = element_line(color = "#EEF2F6", linewidth = 0.25),
+    plot.title = element_text(color = "#1F2933", face = "bold"),
+    axis.title = element_text(color = "#1F2933"),
+    axis.text = element_text(color = "#52606D"),
+    strip.text = element_text(color = "#1F2933", face = "bold"),
+    legend.title = element_text(color = "#1F2933"),
+    legend.text = element_text(color = "#52606D")
+  )
+
 read_raw <- function(filename) {
   read.csv(file.path(data_dir, filename))
 }
@@ -171,13 +185,23 @@ metric_relationship_plot <- ggplot(long_data, aes(x = Value, y = avg_WAR)) +
     x = "Five-year average metric value",
     y = "Average WAR"
   ) +
-  theme_minimal(base_size = 11)
+  plot_theme
 
 ggsave(
   file.path(figures_dir, "pitch-metrics-vs-war.pdf"),
   metric_relationship_plot,
   width = 9,
-  height = 6
+  height = 6,
+  bg = "white"
+)
+
+ggsave(
+  file.path(figures_dir, "pitch-metrics-vs-war.png"),
+  metric_relationship_plot,
+  width = 9,
+  height = 6,
+  dpi = 300,
+  bg = "white"
 )
 
 velocity_profile_plot <- ggplot(
@@ -191,13 +215,23 @@ velocity_profile_plot <- ggplot(
     y = "Average WAR",
     color = "Profile"
   ) +
-  theme_minimal(base_size = 11)
+  plot_theme
 
 ggsave(
   file.path(figures_dir, "velocity-vs-war-by-profile.pdf"),
   velocity_profile_plot,
   width = 8,
-  height = 5
+  height = 5,
+  bg = "white"
+)
+
+ggsave(
+  file.path(figures_dir, "velocity-vs-war-by-profile.png"),
+  velocity_profile_plot,
+  width = 8,
+  height = 5,
+  dpi = 300,
+  bg = "white"
 )
 
 distribution_data <- model_data %>%
@@ -217,13 +251,23 @@ distribution_plot <- ggplot(distribution_data, aes(x = Value)) +
     x = "Five-year average metric value",
     y = "Pitcher count"
   ) +
-  theme_minimal(base_size = 11)
+  plot_theme
 
 ggsave(
   file.path(figures_dir, "pitch-metric-distributions.pdf"),
   distribution_plot,
   width = 9,
-  height = 6
+  height = 6,
+  bg = "white"
+)
+
+ggsave(
+  file.path(figures_dir, "pitch-metric-distributions.png"),
+  distribution_plot,
+  width = 9,
+  height = 6,
+  dpi = 300,
+  bg = "white"
 )
 
 print(profile_summary)

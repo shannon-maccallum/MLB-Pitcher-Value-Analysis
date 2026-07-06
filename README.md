@@ -14,6 +14,26 @@ How do a pitcher's four-seam fastball active spin percentage, velocity, and move
 - Fastball traits alone explained about 4.2% of the variation in average WAR.
 - The results suggest that pitcher value depends on broader factors such as command, pitch mix, durability, role, sequencing, and run prevention context.
 
+## Visualizations
+
+### Pitch Metrics vs. WAR
+
+This figure compares average WAR against active spin percentage, velocity, horizontal movement, and vertical movement.
+
+![Pitch metrics vs. average WAR](outputs/figures/pitch-metrics-vs-war.png)
+
+### Velocity vs. WAR by Pitcher Profile
+
+This scatterplot shows how pitchers grouped by high/low pitch-trait profiles compare on velocity and WAR.
+
+![Velocity vs. WAR by pitcher profile](outputs/figures/velocity-vs-war-by-profile.png)
+
+### Pitch Metric Distributions
+
+This figure shows the distribution of each five-year average pitch metric in the modeled sample.
+
+![Pitch metric distributions](outputs/figures/pitch-metric-distributions.png)
+
 ## Repository Structure
 
 ```text
